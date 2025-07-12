@@ -1,0 +1,27 @@
+{
+    "name": "where-s-waldo",
+    "version": "0.0.0",
+    "private": true,
+    "homepage": "https://github.com/TITANIUM339/Where-s-Waldo#readme",
+    "bugs": {
+        "url": "https://github.com/TITANIUM339/Where-s-Waldo/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/TITANIUM339/Where-s-Waldo.git"
+    },
+    "license": "ISC",
+    "author": "TITANIUM339",
+    "type": "module",
+    "workspaces": [
+        "apps/*"
+    ],
+    "scripts": {
+        "format": "prettier --write .",
+        "check": "prettier --check ."
+    },
+    "devDependencies": {
+        "prettier": "^3.6.2",
+        "prettier-plugin-tailwindcss": "^0.6.14"
+    }
+}
