@@ -1,10 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
+import ErrorBoundary from "./layouts/root/ErrorBoundary";
+import Root from "./layouts/root/Root";
 
 export default function App() {
     const router = createBrowserRouter([
         {
             path: "/",
-            element: <h1 className="text-4xl text-amber-400">Hello, World!</h1>,
+            Component: Root,
+            ErrorBoundary,
+            children: [],
         },
     ]);
 
