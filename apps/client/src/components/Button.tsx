@@ -33,7 +33,7 @@ export default function Button({
         "transition",
         "font-medium",
         "text-center",
-        "hover:cursor-pointer",
+        "hover:not-disabled:cursor-pointer",
     );
 
     const classes = {
@@ -43,18 +43,18 @@ export default function Button({
             "text-gray-100",
             "shadow-md",
             "shadow-red-500/50",
-            "hover:bg-red-600",
-            "hover:shadow-red-600/50",
-            "dark:hover:bg-red-400",
-            "dark:hover:shadow-red-400/50",
+            "hover:not-disabled:bg-red-600",
+            "hover:not-disabled:shadow-red-600/50",
+            "dark:hover:not-disabled:bg-red-400",
+            "dark:hover:not-disabled:shadow-red-400/50",
         ),
         secondary: clsx(
             baseClasses,
             "border",
             "border-gray-300",
-            "hover:bg-gray-200",
+            "hover:not-disabled:bg-gray-200",
             "dark:border-gray-700",
-            "dark:hover:bg-gray-800",
+            "dark:hover:not-disabled:bg-gray-800",
         ),
     }[variant];
 
