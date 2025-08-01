@@ -11,3 +11,12 @@ export interface APIerror {
 export interface APItoken {
     token: string;
 }
+
+export type APIgames = {
+    id: number;
+    name: string;
+    description: string;
+    imageURL: string;
+    imageWidth: number;
+    imageHeight: number;
+}[];
