@@ -29,7 +29,14 @@ export default function Root() {
                         </Link>
                     </div>
                     <div>
-                        <Button icon variant="secondary" onClick={toggleTheme}>
+                        <Button
+                            icon
+                            variant="secondary"
+                            aria-label={
+                                theme === "dark" ? "Light mode" : "Dark mode"
+                            }
+                            onClick={toggleTheme}
+                        >
                             {theme === "dark" ? <BsSunFill /> : <BsMoonFill />}
                         </Button>
                     </div>
