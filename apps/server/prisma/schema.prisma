@@ -1,8 +1,36 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "../generated"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model Game {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
+  description String
+  imageURL    String
+  imageWidth  Int
+  imageHeight Int
+  coordinates Coordinate[]
+}
+
+model Character {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
+  coordinates Coordinate[]
+}
+
+model Coordinate {
+  x           Int
+  y           Int
+  characterId Int
+  character   Character @relation(fields: [characterId], references: [id])
+  gameId      Int
+  game        Game      @relation(fields: [gameId], references: [id])
+
+  @@id(name: "id", fields: [characterId, gameId])
 }
