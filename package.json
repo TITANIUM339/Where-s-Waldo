@@ -17,7 +17,7 @@
         "apps/*"
     ],
     "scripts": {
-        "format": "prettier --write .",
+        "format": "prettier --write . && prisma format --schema ./apps/server/prisma/schema.prisma",
         "check": "prettier --check ."
     },
     "devDependencies": {
