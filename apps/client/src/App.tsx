@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import ErrorBoundary from "./layouts/root/ErrorBoundary";
+import HydrateFallback from "./layouts/root/HydrateFallback";
 import Root from "./layouts/root/Root";
 import Games from "./pages/games/Games";
 import gamesLoader from "./pages/games/loader";
@@ -13,6 +14,7 @@ export default function App() {
             path: "/",
             Component: Root,
             ErrorBoundary,
+            HydrateFallback,
             children: [
                 {
                     index: true,
