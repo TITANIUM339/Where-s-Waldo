@@ -2,7 +2,7 @@ import type { NextFunction, Request, Response } from "express";
 import { validationResult } from "express-validator";
 import createHttpError from "http-errors";
 
-export default (req: Request, _res: Response, next: NextFunction) => {
+export function bodyHandler(req: Request, _res: Response, next: NextFunction) {
     const result = validationResult(req);
 
     if (!result.isEmpty()) {
@@ -16,4 +16,16 @@ export default (req: Request, _res: Response, next: NextFunction) => {
     }
 
     next();
-};
+}
+
+export function paramHandler(req: Request, _res: Response, next: NextFunction) {
+    const result = validationResult(req);
+
+    if (!result.isEmpty()) {
+        next("route");
+
+        return;
+    }
+
+    next();
+}
