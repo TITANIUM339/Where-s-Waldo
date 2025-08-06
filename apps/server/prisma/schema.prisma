@@ -21,6 +21,7 @@ model Game {
 model Character {
   id          Int          @id @default(autoincrement())
   name        String       @unique
+  imageURL    String
   coordinates Coordinate[]
 }
 

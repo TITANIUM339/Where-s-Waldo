@@ -16,7 +16,13 @@ const games = await prisma.game.createManyAndReturn({
 });
 
 const characters = await prisma.character.createManyAndReturn({
-    data: [{ name: "Waldo" }],
+    data: [
+        {
+            name: "Waldo",
+            imageURL:
+                "https://static.wikia.nocookie.net/waldo/images/9/9d/Character.Waldo.jpg",
+        },
+    ],
 });
 
 function getGameId(name) {
