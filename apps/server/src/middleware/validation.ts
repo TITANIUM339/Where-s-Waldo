@@ -10,7 +10,7 @@ export function validateNewPlayerBody() {
         .withMessage("maximum length is 16");
 }
 
-export function validateNewGameParam() {
+export function validateGameIdParam() {
     return param("gameId")
         .isInt({ min: 1 })
         .bail()

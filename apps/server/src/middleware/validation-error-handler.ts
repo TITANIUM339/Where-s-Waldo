@@ -22,7 +22,7 @@ export function paramHandler(req: Request, _res: Response, next: NextFunction) {
     const result = validationResult(req);
 
     if (!result.isEmpty()) {
-        next("route");
+        next("router");
 
         return;
     }
