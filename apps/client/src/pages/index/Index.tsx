@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { Form, useActionData, useNavigation } from "react-router";
+import { useFetcher, useNavigation } from "react-router";
 import Button from "../../components/Button";
 import Spinner from "../../components/Spinner";
 import type { APIerror } from "../../types/api-types";
@@ -9,7 +9,9 @@ export default function Index() {
 
     const navigation = useNavigation();
 
-    const error: APIerror | undefined = useActionData();
+    const fetcher = useFetcher();
+
+    const error = fetcher.data as APIerror | undefined;
 
     const nameErrorMessage = error?.data?.find(
         ({ path }) => path === "name",
@@ -18,7 +20,7 @@ export default function Index() {
     return (
         <div className="flex h-full items-center justify-center">
             <div className="rounded-md bg-gray-50 p-12 shadow dark:bg-gray-950">
-                <Form method="post" className="flex flex-col gap-6">
+                <fetcher.Form action="new-player" className="flex flex-col gap-6">
                     <div className="flex flex-col gap-2">
                         <label className="text-lg font-medium" htmlFor={id}>
                             Name *
@@ -49,7 +51,7 @@ export default function Index() {
                             </div>
                         )}
                     </Button>
-                </Form>
+                </fetcher.Form>
             </div>
         </div>
     );

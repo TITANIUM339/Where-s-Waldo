@@ -1,17 +1,14 @@
 /* eslint-disable @typescript-eslint/only-throw-error */
-import { redirect, type ActionFunctionArgs } from "react-router";
+import { type LoaderFunctionArgs, redirect } from "react-router";
 import api from "../../lib/api";
 import type { APIerror, APItoken } from "../../types/api-types";
 
-export default async function action({ request }: ActionFunctionArgs) {
-    const formData = await request.formData();
+export default async function loader({ request }: LoaderFunctionArgs) {
+    const url = new URL(request.url);
 
-    const response = await api("new-player", {
-        method: "post",
-        body: JSON.stringify({
-            name: formData.get("name"),
-        }),
-    });
+    const response = await api(
+        `new-player?name=${url.searchParams.get("name") ?? ""}`,
+    );
 
     if (response.status === 400) {
         return (await response.json()) as APIerror;
