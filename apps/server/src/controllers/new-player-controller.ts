@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import crypto from "node:crypto";
 
 export default {
-    async post(req: Request, res: Response) {
+    async get(req: Request, res: Response) {
         const { name } = matchedData(req);
 
         const token = await new Promise((resolve, reject) =>

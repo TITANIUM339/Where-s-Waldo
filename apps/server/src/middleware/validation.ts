@@ -1,8 +1,8 @@
-import { body, param, query } from "express-validator";
+import { param, query } from "express-validator";
 import prisma from "../lib/prisma.js";
 
-export function validateNewPlayerBody() {
-    return body("name")
+export function validateNewPlayerQuery() {
+    return query("name")
         .trim()
         .notEmpty()
         .withMessage("required")
