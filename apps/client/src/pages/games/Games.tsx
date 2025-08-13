@@ -32,14 +32,14 @@ export default function Games() {
                             </section>
                             <div className="mt-4 flex gap-4">
                                 <div className="flex-1">
-                                    <Button link to={`/game/${game.id}`}>
+                                    <Button link to={`/games/${game.id}`}>
                                         Play
                                     </Button>
                                 </div>
                                 <div className="flex-1">
                                     <Button
                                         link
-                                        to={`/game/${game.id}/leaderboard`}
+                                        to={`/games/${game.id}/leaderboard`}
                                         variant="secondary"
                                     >
                                         Leaderboard
