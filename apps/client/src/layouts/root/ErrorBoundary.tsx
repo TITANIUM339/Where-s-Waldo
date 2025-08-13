@@ -28,15 +28,10 @@ export default function ErrorBoundary() {
             <div>
                 <section>
                     {isRouteErrorResponse(error) ? (
-                        <>
-                            <h1 className="mb-2 text-4xl font-bold">
-                                <span className="text-red-500">
-                                    {error.status}
-                                </span>{" "}
-                                {error.statusText}
-                            </h1>
-                            <p>{error.data}</p>
-                        </>
+                        <h1 className="mb-2 text-4xl font-bold">
+                            <span className="text-red-500">{error.status}</span>{" "}
+                            {error.statusText}
+                        </h1>
                     ) : (
                         <h1 className="text-4xl font-bold">Unknown Error</h1>
                     )}
