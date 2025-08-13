@@ -20,7 +20,10 @@ export default function Index() {
     return (
         <div className="flex h-full items-center justify-center">
             <div className="rounded-md bg-gray-50 p-12 shadow dark:bg-gray-950">
-                <fetcher.Form action="new-player" className="flex flex-col gap-6">
+                <fetcher.Form
+                    action="new-player"
+                    className="flex flex-col gap-6"
+                >
                     <div className="flex flex-col gap-2">
                         <label className="text-lg font-medium" htmlFor={id}>
                             Name *
