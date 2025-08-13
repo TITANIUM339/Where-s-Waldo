@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { BsGithub, BsMoonFill, BsSunFill } from "react-icons/bs";
 import { Link, Outlet } from "react-router";
+import { ToastContainer } from "react-toastify";
 import Button from "../../components/Button";
 import useTheme from "../../hooks/theme";
 
@@ -56,6 +57,7 @@ export default function Root() {
                     <BsGithub />
                 </Link>
             </footer>
+            <ToastContainer />
         </div>
     );
 }
