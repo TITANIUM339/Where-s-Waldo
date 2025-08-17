@@ -62,10 +62,14 @@ export default function Game() {
             });
 
             setCharacters((prev) =>
-                prev.map((character) => ({
-                    ...character,
-                    found: character.id === fetcherData.character.id,
-                })),
+                prev.map((character) =>
+                    character.id === fetcherData.character.id
+                        ? {
+                              ...character,
+                              found: true,
+                          }
+                        : character,
+                ),
             );
         } else {
             toast(`${fetcherData.character.name} is not there. Try again!`, {
@@ -117,7 +121,7 @@ export default function Game() {
                         position={dropdownPosition}
                         targetRect={dropdownContainerRef.current.getBoundingClientRect()}
                     >
-                        <ul>
+                        <ul className="flex flex-col gap-2">
                             {characters
                                 .filter((character) => !character.found)
                                 .map((character) => (
