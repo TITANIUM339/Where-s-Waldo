@@ -41,11 +41,11 @@ export function validateCharacterPositionQuery() {
         query("x")
             .isNumeric()
             .withMessage("must be number")
-            .custom((value) => Number(value)),
+            .customSanitizer((value) => Number(value)),
         query("y")
             .isNumeric()
             .withMessage("must be number")
-            .custom((value) => Number(value)),
+            .customSanitizer((value) => Number(value)),
     ];
 }
 
