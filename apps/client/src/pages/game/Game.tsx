@@ -86,12 +86,15 @@ export default function Game() {
             <div className="absolute top-0 right-0 z-10 m-2 flex flex-col items-end gap-2">
                 {/* Convert iat to ms */}
                 <Timer start={iat * 1000} />
-                <div className="flex gap-2 bg-gray-50/60 p-2 shadow dark:bg-gray-950/60">
+                <div className="flex flex-wrap gap-2 bg-gray-50/60 p-2 shadow dark:bg-gray-950/60">
                     {characters.map((character) => (
                         <img
                             key={character.id}
                             className={clsx(
                                 "max-h-[10dvh]",
+                                "max-w-[10dvw]",
+                                "object-contain",
+                                "transition-opacity",
                                 character.found && "opacity-20",
                             )}
                             src={character.imageURL}
@@ -127,6 +130,7 @@ export default function Game() {
                                 .map((character) => (
                                     <li key={character.id}>
                                         <fetcher.Form
+                                            className="flex flex-col"
                                             action={`/games/${params.gameId}/characters/${character.id}/verify-position`}
                                         >
                                             <input
