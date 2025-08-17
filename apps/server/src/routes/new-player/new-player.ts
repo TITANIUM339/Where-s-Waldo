@@ -1,6 +1,6 @@
 import { Router } from "express";
 import newPlayerController from "../../controllers/new-player-controller.js";
-import { queryHandler } from "../../middleware/validation-error-handler.js";
+import { queryAndBodyHandler } from "../../middleware/validation-error-handler.js";
 import { validateNewPlayerQuery } from "../../middleware/validation.js";
 
 const router = Router();
@@ -10,7 +10,7 @@ const route = "/new-player";
 router.get(
     route,
     validateNewPlayerQuery(),
-    queryHandler,
+    queryAndBodyHandler,
     newPlayerController.get,
 );
 
