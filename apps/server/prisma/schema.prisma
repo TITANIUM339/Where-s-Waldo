@@ -35,3 +35,10 @@ model Coordinate {
 
   @@id(name: "id", fields: [characterId, gameId])
 }
+
+model Leaderboard {
+  id        String   @id
+  name      String
+  start     DateTime
+  updatedAt DateTime @updatedAt
+}
