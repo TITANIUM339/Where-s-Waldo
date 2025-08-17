@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 import { matchedData } from "express-validator";
-import { TOLERANCE } from "../lib/constants.js";
+import isInProximity from "../lib/isInProximity.js";
 import prisma from "../lib/prisma.js";
 
 export default {
@@ -12,14 +12,10 @@ export default {
             include: { character: true },
         });
 
-        const radius = Math.sqrt(
-            (x - coordinate.x) ** 2 + (y - coordinate.y) ** 2,
-        );
-
-        if (radius >= TOLERANCE) {
-            res.json({ character: coordinate.character, found: false });
-        } else {
+        if (isInProximity({ x: coordinate.x, y: coordinate.y }, { x, y })) {
             res.json({ character: coordinate.character, found: true });
+        } else {
+            res.json({ character: coordinate.character, found: false });
         }
     },
 };
