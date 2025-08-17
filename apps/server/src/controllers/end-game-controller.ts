@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import { matchedData } from "express-validator";
+import { verifyJwt } from "../lib/jwt.js";
 import prisma from "../lib/prisma.js";
-import verifyJwt from "../lib/verifyJwt.js";
 
 interface Player {
     id: string;

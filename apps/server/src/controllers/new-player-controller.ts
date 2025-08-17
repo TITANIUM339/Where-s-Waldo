@@ -1,27 +1,13 @@
 import type { Request, Response } from "express";
 import { matchedData } from "express-validator";
-import jwt from "jsonwebtoken";
 import crypto from "node:crypto";
+import { signJwt } from "../lib/jwt.js";
 
 export default {
     async get(req: Request, res: Response) {
         const { name } = matchedData(req);
 
-        const token = await new Promise((resolve, reject) =>
-            jwt.sign(
-                { id: crypto.randomUUID(), name },
-                process.env.JWT_SECRET as string,
-                (err: Error | null, token: string | undefined) => {
-                    if (err) {
-                        reject(err);
-
-                        return;
-                    }
-
-                    resolve(token);
-                },
-            ),
-        );
+        const token = await signJwt({ id: crypto.randomUUID(), name });
 
         res.json({ token });
     },

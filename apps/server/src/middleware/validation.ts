@@ -1,7 +1,7 @@
 import { body, matchedData, param, query } from "express-validator";
 import isInProximity from "../lib/isInProximity.js";
+import { verifyJwt } from "../lib/jwt.js";
 import prisma from "../lib/prisma.js";
-import verifyJwt from "../lib/verifyJwt.js";
 
 export function validateNewPlayerQuery() {
     return query("name")

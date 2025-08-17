@@ -18,9 +18,7 @@ export function verifyJwt(token: string) {
     );
 }
 
-export function signJwt(
-    payload: string | object | Buffer<ArrayBufferLike>,
-) {
+export function signJwt(payload: string | object | Buffer<ArrayBufferLike>) {
     return new Promise((resolve, reject) =>
         jwt.sign(
             payload,
@@ -37,4 +35,3 @@ export function signJwt(
         ),
     );
 }
-

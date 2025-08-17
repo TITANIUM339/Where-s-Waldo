@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 import { matchedData } from "express-validator";
-import jwt from "jsonwebtoken";
+import { signJwt } from "../lib/jwt.js";
 import prisma from "../lib/prisma.js";
 
 export default {
@@ -15,21 +15,7 @@ export default {
             }),
         ]);
 
-        const token = await new Promise((resolve, reject) =>
-            jwt.sign(
-                {},
-                process.env.JWT_SECRET as string,
-                (err: Error | null, token: string | undefined) => {
-                    if (err) {
-                        reject(err);
-
-                        return;
-                    }
-
-                    resolve(token);
-                },
-            ),
-        );
+        const token = await signJwt({});
 
         res.json({
             game: {
