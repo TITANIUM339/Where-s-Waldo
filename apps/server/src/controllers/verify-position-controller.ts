@@ -13,9 +13,17 @@ export default {
         });
 
         if (isInProximity({ x: coordinate.x, y: coordinate.y }, { x, y })) {
-            res.json({ character: coordinate.character, found: true });
+            res.json({
+                character: coordinate.character,
+                found: true,
+                position: { x, y },
+            });
         } else {
-            res.json({ character: coordinate.character, found: false });
+            res.json({
+                character: coordinate.character,
+                found: false,
+                position: { x, y },
+            });
         }
     },
 };

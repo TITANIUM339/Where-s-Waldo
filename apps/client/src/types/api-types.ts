@@ -45,4 +45,5 @@ export interface APIVerifyPosition {
         name: string;
         imageURL: string;
     };
+    position: { x: number; y: number };
 }
