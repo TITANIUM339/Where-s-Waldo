@@ -3,6 +3,7 @@ import { paramHandler } from "../../../middleware/validation-error-handler.js";
 import { validateGameIdParam } from "../../../middleware/validation.js";
 import characters from "./characters/characters.js";
 import endGame from "./end-game/end-game.js";
+import leaderboard from "./leaderboard/leaderboard.js";
 import newGame from "./new-game/new-game.js";
 
 const router = Router();
@@ -16,6 +17,7 @@ router.use(
     newGame,
     characters,
     endGame,
+    leaderboard,
 );
 
 export default router;
