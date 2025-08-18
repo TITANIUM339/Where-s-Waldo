@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useRef, useState } from "react";
-import { useFetcher, useLoaderData, useParams, useSubmit } from "react-router";
+import { useFetcher, useLoaderData, useSubmit } from "react-router";
 import { toast } from "react-toastify";
 import Button from "../../components/Button";
 import Dropdown from "../../components/Dropdown";
@@ -39,8 +39,6 @@ export default function Game() {
     const fetcher = useFetcher();
 
     const submit = useSubmit();
-
-    const params = useParams();
 
     useEffect(() => {
         function resetDropdown() {
@@ -171,7 +169,7 @@ export default function Game() {
                                     <li key={character.id}>
                                         <fetcher.Form
                                             className="flex flex-col"
-                                            action={`/games/${params.gameId}/characters/${character.id}/verify-position`}
+                                            action={`characters/${character.id}/verify-position`}
                                         >
                                             <input
                                                 type="number"
