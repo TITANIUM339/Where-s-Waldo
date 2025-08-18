@@ -58,7 +58,9 @@ export default function Game() {
 
     useEffect(() => {
         setDropdownPosition(null);
+    }, [fetcher]);
 
+    useEffect(() => {
         if (!fetcher.data) {
             return;
         }
@@ -107,7 +109,7 @@ export default function Game() {
             },
             {
                 method: "post",
-                action: `end-game`,
+                action: "end-game",
                 encType: "application/json",
             },
         );
@@ -139,7 +141,11 @@ export default function Game() {
             </div>
             <div
                 ref={dropdownContainerRef}
-                className="relative overflow-hidden"
+                className={clsx(
+                    "relative",
+                    "overflow-hidden",
+                    fetcher.state !== "idle" && "cursor-progress",
+                )}
                 onClick={(event) => {
                     event.stopPropagation();
 
