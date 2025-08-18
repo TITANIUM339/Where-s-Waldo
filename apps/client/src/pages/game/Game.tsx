@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useRef, useState } from "react";
-import { useFetcher, useLoaderData, useParams } from "react-router";
+import { useFetcher, useLoaderData, useParams, useSubmit } from "react-router";
 import { toast } from "react-toastify";
 import Button from "../../components/Button";
 import Dropdown from "../../components/Dropdown";
@@ -9,7 +9,10 @@ import Timer from "../../components/Timer";
 import type { APInewGame, APIVerifyPosition } from "../../types/api-types";
 
 export default function Game() {
-    const newGame: APInewGame = useLoaderData();
+    const {
+        newGame,
+        playerToken,
+    }: { newGame: APInewGame; playerToken: string } = useLoaderData();
 
     const dropdownContainerRef = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
@@ -19,14 +22,23 @@ export default function Game() {
         clientY: number;
     } | null>(null);
     const [characterPosition, setCharacterPosition] = useState({ x: 0, y: 0 });
-    const [characters, setCharacters] = useState(
+    const [characters, setCharacters] = useState<
+        {
+            id: number;
+            name: string;
+            imageURL: string;
+            position: null | { x: number; y: number };
+        }[]
+    >(
         newGame.game.characters.map((character) => ({
             ...character,
-            found: false,
+            position: null,
         })),
     );
 
     const fetcher = useFetcher();
+
+    const submit = useSubmit();
 
     const params = useParams();
 
@@ -66,7 +78,7 @@ export default function Game() {
                     character.id === fetcherData.character.id
                         ? {
                               ...character,
-                              found: true,
+                              position: fetcherData.position,
                           }
                         : character,
                 ),
@@ -78,6 +90,28 @@ export default function Game() {
             });
         }
     }, [fetcher.data]);
+
+    useEffect(() => {
+        if (characters.filter((character) => !character.position).length) {
+            return;
+        }
+
+        void submit(
+            {
+                characters: characters.map((character) => ({
+                    id: character.id,
+                    position: character.position,
+                })),
+                playerToken,
+                gameToken: newGame.token,
+            },
+            {
+                method: "post",
+                action: `end-game`,
+                encType: "application/json",
+            },
+        );
+    }, [characters, submit, playerToken, newGame.token]);
 
     const { iat }: { iat: number } = jwtDecode(newGame.token);
 
@@ -95,7 +129,7 @@ export default function Game() {
                                 "max-w-[10dvw]",
                                 "object-contain",
                                 "transition-opacity",
-                                character.found && "opacity-20",
+                                character.position && "opacity-20",
                             )}
                             src={character.imageURL}
                             alt={character.name}
@@ -126,7 +160,7 @@ export default function Game() {
                     >
                         <ul className="flex flex-col gap-2">
                             {characters
-                                .filter((character) => !character.found)
+                                .filter((character) => !character.position)
                                 .map((character) => (
                                     <li key={character.id}>
                                         <fetcher.Form
