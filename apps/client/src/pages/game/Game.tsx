@@ -117,9 +117,13 @@ export default function Game() {
 
     return (
         <div className="relative flex h-full w-full items-center justify-center p-2">
-            <div className="absolute top-0 right-0 z-10 m-2 flex flex-col items-end gap-2">
+            <div className="absolute top-0 right-0 z-10 m-2">
                 {/* Convert iat to ms */}
-                <Timer start={iat * 1000} />
+                <div className="bg-gray-50/60 p-2 shadow dark:bg-gray-950/60">
+                    <Timer start={iat * 1000} />
+                </div>
+            </div>
+            <div className="absolute top-0 left-0 z-10 m-2">
                 <div className="flex flex-wrap gap-2 bg-gray-50/60 p-2 shadow dark:bg-gray-950/60">
                     {characters.map((character) => (
                         <img
