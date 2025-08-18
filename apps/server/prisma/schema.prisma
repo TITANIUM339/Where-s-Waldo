@@ -9,13 +9,14 @@ datasource db {
 }
 
 model Game {
-  id          Int          @id @default(autoincrement())
-  name        String       @unique
+  id          Int           @id @default(autoincrement())
+  name        String        @unique
   description String
   imageURL    String
   imageWidth  Int
   imageHeight Int
   coordinates Coordinate[]
+  leaderboard Leaderboard[]
 }
 
 model Character {
@@ -41,4 +42,6 @@ model Leaderboard {
   name      String
   start     DateTime
   updatedAt DateTime @updatedAt
+  gameId    Int
+  game      Game     @relation(fields: [gameId], references: [id])
 }
