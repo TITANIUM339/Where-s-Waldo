@@ -17,5 +17,8 @@ export default async function loader({ params }: LoaderFunctionArgs) {
         throw response;
     }
 
-    return (await response.json()) as APInewGame;
+    return {
+        newGame: (await response.json()) as APInewGame,
+        playerToken: player,
+    };
 }
