@@ -14,7 +14,7 @@ interface Game {
 
 export default {
     async post(req: Request, res: Response) {
-        const { playerToken, gameToken } = matchedData(req);
+        const { playerToken, gameToken, gameId } = matchedData(req);
 
         const [player, game] = await Promise.all([
             verifyJwt(playerToken),
@@ -26,7 +26,7 @@ export default {
         const start = new Date((game as Game).iat * 1000);
 
         const entry = await prisma.leaderboard.upsert({
-            create: { id, name, start },
+            create: { id, name, start, gameId },
             update: { start },
             where: { id },
         });
