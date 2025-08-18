@@ -28,7 +28,7 @@ export default function Timer({ start }: { start: number }) {
     });
 
     return (
-        <time className="bg-gray-50/60 p-2 shadow dark:bg-gray-950/60">
+        <time>
             {hours}:{minutes}:{seconds}
         </time>
     );
