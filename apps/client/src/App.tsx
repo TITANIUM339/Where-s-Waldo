@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import ErrorBoundary from "./layouts/root/ErrorBoundary";
 import HydrateFallback from "./layouts/root/HydrateFallback";
 import Root from "./layouts/root/Root";
+import endGameAction from "./pages/end-game/action";
 import Game from "./pages/game/Game";
 import gameLoader from "./pages/game/loader";
 import Games from "./pages/games/Games";
@@ -41,6 +42,10 @@ export default function App() {
                         {
                             path: "characters/:characterId/verify-position",
                             loader: verifyCharactersLoader,
+                        },
+                        {
+                            path: "end-game",
+                            action: endGameAction,
                         },
                     ],
                 },
