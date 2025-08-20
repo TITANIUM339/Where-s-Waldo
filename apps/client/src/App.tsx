@@ -9,6 +9,8 @@ import Games from "./pages/games/Games";
 import gamesLoader from "./pages/games/loader";
 import Index from "./pages/index/Index";
 import indexLoader from "./pages/index/loader";
+import Leaderboard from "./pages/leaderboard/Leaderboard";
+import leaderBoardLoader from "./pages/leaderboard/loader";
 import newPlayerLoader from "./pages/new-player/loader";
 import verifyCharactersLoader from "./pages/verify-position/loader";
 
@@ -48,6 +50,11 @@ export default function App() {
                             action: endGameAction,
                         },
                     ],
+                },
+                {
+                    path: "games/:gameId/leaderboard",
+                    loader: leaderBoardLoader,
+                    Component: Leaderboard,
                 },
             ],
         },
