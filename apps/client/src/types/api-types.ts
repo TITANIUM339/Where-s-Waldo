@@ -47,3 +47,11 @@ export interface APIVerifyPosition {
     };
     position: { x: number; y: number };
 }
+
+export type APILeaderboard = {
+    id: string;
+    name: string;
+    start: string;
+    updatedAt: string;
+    gameId: number;
+}[];
