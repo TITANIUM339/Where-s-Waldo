@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { jwtDecode } from "jwt-decode";
 import { useEffect, useRef, useState } from "react";
 import { useFetcher, useLoaderData, useSubmit } from "react-router";
 import { toast } from "react-toastify";
@@ -113,14 +112,11 @@ export default function Game() {
         );
     }, [characters, submit, playerToken, newGame.token]);
 
-    const { iat }: { iat: number } = jwtDecode(newGame.token);
-
     return (
         <div className="relative flex h-full w-full items-center justify-center p-2">
             <div className="absolute top-0 right-0 z-10 m-2">
-                {/* Convert iat to ms */}
                 <div className="bg-gray-50/60 p-2 shadow dark:bg-gray-950/60">
-                    <Timer start={iat * 1000} />
+                    <Timer />
                 </div>
             </div>
             <div className="absolute top-0 left-0 z-10 m-2">
