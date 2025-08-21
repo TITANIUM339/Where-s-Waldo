@@ -37,14 +37,14 @@ export default function Leaderboard() {
                         <tbody className="flex flex-col divide-y divide-solid divide-gray-300 dark:divide-gray-700">
                             {leaderboard.map((entry, index) => (
                                 <tr
-                                    key={entry.id}
-                                    id={entry.id}
+                                    key={entry.playerId}
+                                    id={entry.playerId}
                                     className={clsx(
                                         "grid",
                                         "grid-cols-4",
                                         "gap-2",
                                         "p-4",
-                                        entry.id === id &&
+                                        entry.playerId === id &&
                                             "bg-sky-100 dark:bg-sky-900",
                                     )}
                                 >

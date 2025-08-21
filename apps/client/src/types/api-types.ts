@@ -49,7 +49,7 @@ export interface APIVerifyPosition {
 }
 
 export type APILeaderboard = {
-    id: string;
+    playerId: string;
     name: string;
     start: string;
     updatedAt: string;
