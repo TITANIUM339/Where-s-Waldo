@@ -14,6 +14,7 @@ export default function Leaderboard() {
         <div className="h-full w-full pt-8 pr-2 pb-8 pl-2">
             <section className="mr-auto ml-auto w-full max-w-7xl">
                 <h1 className="text-4xl font-bold">Leaderboard</h1>
+                <h2 className="mt-2 text-lg font-medium">{data.game}</h2>
                 <div className="mt-4">
                     <table className="grid grid-rows-[min-content_1fr] overflow-hidden rounded-md bg-gray-50 shadow dark:bg-gray-950">
                         <thead className="bg-gray-200 p-4 dark:bg-gray-800">
