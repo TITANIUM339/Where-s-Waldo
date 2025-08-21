@@ -6,9 +6,14 @@ export default {
     async get(req: Request, res: Response) {
         const { gameId } = matchedData(req);
 
-        const leaderboard =
-            await prisma.$queryRaw`SELECT * FROM "Leaderboard" WHERE "gameId" = ${gameId} ORDER BY "updatedAt" - "start" ASC`;
+        const [leaderboard, { name }] = await Promise.all([
+            prisma.$queryRaw`SELECT * FROM "Leaderboard" WHERE "gameId" = ${gameId} ORDER BY "updatedAt" - "start" ASC`,
+            prisma.game.findUniqueOrThrow({
+                where: { id: gameId },
+                select: { name: true },
+            }),
+        ]);
 
-        res.json(leaderboard);
+        res.json({ leaderboard, game: name });
     },
 };
