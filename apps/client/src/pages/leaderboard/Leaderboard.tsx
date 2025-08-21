@@ -5,10 +5,8 @@ import { getElapsedTime } from "../../lib/time";
 import type { APILeaderboard } from "../../types/api-types";
 
 export default function Leaderboard() {
-    const {
-        leaderboard,
-        player,
-    }: { leaderboard: APILeaderboard; player: string } = useLoaderData();
+    const { data, player }: { data: APILeaderboard; player: string } =
+        useLoaderData();
 
     const { id }: { id: string } = jwtDecode(player);
 
@@ -35,7 +33,7 @@ export default function Leaderboard() {
                             </tr>
                         </thead>
                         <tbody className="flex flex-col divide-y divide-solid divide-gray-300 dark:divide-gray-700">
-                            {leaderboard.map((entry, index) => (
+                            {data.leaderboard.map((entry, index) => (
                                 <tr
                                     key={entry.playerId}
                                     id={entry.playerId}

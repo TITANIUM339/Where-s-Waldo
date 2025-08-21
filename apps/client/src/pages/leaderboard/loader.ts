@@ -17,5 +17,5 @@ export default async function loader({ params }: LoaderFunctionArgs) {
         throw response;
     }
 
-    return { leaderboard: (await response.json()) as APILeaderboard, player };
+    return { data: (await response.json()) as APILeaderboard, player };
 }

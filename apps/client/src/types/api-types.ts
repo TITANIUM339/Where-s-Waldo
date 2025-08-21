@@ -48,10 +48,13 @@ export interface APIVerifyPosition {
     position: { x: number; y: number };
 }
 
-export type APILeaderboard = {
-    playerId: string;
-    name: string;
-    start: string;
-    updatedAt: string;
-    gameId: number;
-}[];
+export interface APILeaderboard {
+    leaderboard: {
+        playerId: string;
+        name: string;
+        start: string;
+        updatedAt: string;
+        gameId: number;
+    }[];
+    game: string;
+}
