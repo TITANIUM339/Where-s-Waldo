@@ -38,10 +38,12 @@ model Coordinate {
 }
 
 model Leaderboard {
-  id        String   @id
+  playerId  String
   name      String
   start     DateTime
   updatedAt DateTime @updatedAt
   gameId    Int
   game      Game     @relation(fields: [gameId], references: [id])
+
+  @@id(name: "id", fields: [playerId, gameId])
 }
