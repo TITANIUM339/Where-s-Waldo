@@ -8,7 +8,7 @@ export default {
         const { gameId } = matchedData(req);
 
         const [game, characters] = await Promise.all([
-            prisma.game.findUnique({ where: { id: gameId } }),
+            prisma.game.findUniqueOrThrow({ where: { id: gameId } }),
             prisma.coordinate.findMany({
                 where: { gameId },
                 select: { character: true },
