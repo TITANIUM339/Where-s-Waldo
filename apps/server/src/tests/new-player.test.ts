@@ -15,19 +15,7 @@ describe("responds with 400 for bad input", () => {
         const response = await request(app).get("/new-player");
 
         expect(response.status).toBe(400);
-        expect(response.body).toMatchObject({
-            data: [
-                {
-                    location: "query",
-                    msg: "required",
-                    path: "name",
-                    type: "field",
-                    value: "",
-                },
-            ],
-            message: "Bad Request",
-            status: 400,
-        });
+        expect(response.body).toMatchSnapshot();
     });
 
     test("GET /new-player?name=This string is too long", async () => {
@@ -36,19 +24,7 @@ describe("responds with 400 for bad input", () => {
         );
 
         expect(response.status).toBe(400);
-        expect(response.body).toMatchObject({
-            data: [
-                {
-                    location: "query",
-                    msg: "maximum length is 16",
-                    path: "name",
-                    type: "field",
-                    value: "This string is too long",
-                },
-            ],
-            message: "Bad Request",
-            status: 400,
-        });
+        expect(response.body).toMatchSnapshot();
     });
 });
 

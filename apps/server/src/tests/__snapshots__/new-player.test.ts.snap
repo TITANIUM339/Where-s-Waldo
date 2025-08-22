@@ -1,0 +1,33 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`responds with 400 for bad input > GET /new-player 1`] = `
+{
+  "data": [
+    {
+      "location": "query",
+      "msg": "required",
+      "path": "name",
+      "type": "field",
+      "value": "",
+    },
+  ],
+  "message": "Bad Request",
+  "status": 400,
+}
+`;
+
+exports[`responds with 400 for bad input > GET /new-player?name=This string is too long 1`] = `
+{
+  "data": [
+    {
+      "location": "query",
+      "msg": "maximum length is 16",
+      "path": "name",
+      "type": "field",
+      "value": "This string is too long",
+    },
+  ],
+  "message": "Bad Request",
+  "status": 400,
+}
+`;
