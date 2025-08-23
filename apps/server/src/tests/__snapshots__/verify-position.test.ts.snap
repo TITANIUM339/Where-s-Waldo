@@ -1,0 +1,90 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`responds with 200 for correct character positions > GET /1/characters/1/verify-position?x=550&y=1850 1`] = `
+{
+  "character": {
+    "id": 1,
+    "imageURL": "https://static.wikia.nocookie.net/waldo/images/9/9d/Character.Waldo.jpg",
+    "name": "Waldo",
+  },
+  "found": true,
+  "position": {
+    "x": 550,
+    "y": 1850,
+  },
+}
+`;
+
+exports[`responds with 200 for correct character positions > GET /1/characters/2/verify-position?x=2700&y=1600 1`] = `
+{
+  "character": {
+    "id": 2,
+    "imageURL": "https://static.wikia.nocookie.net/waldo/images/3/3e/Character.Wenda.jpg",
+    "name": "Wenda",
+  },
+  "found": true,
+  "position": {
+    "x": 2700,
+    "y": 1600,
+  },
+}
+`;
+
+exports[`responds with 200 for correct character positions > GET /1/characters/3/verify-position?x=1000.123&y=123.123 1`] = `
+{
+  "character": {
+    "id": 3,
+    "imageURL": "https://static.wikia.nocookie.net/waldo/images/6/60/Character.Whitebeard.jpg",
+    "name": "Wizard Whitebeard",
+  },
+  "found": true,
+  "position": {
+    "x": 1000.123,
+    "y": 123.123,
+  },
+}
+`;
+
+exports[`responds with 400 for bad input > GET /1/characters/1/verify-position 1`] = `
+{
+  "data": [
+    {
+      "location": "query",
+      "msg": "must be number",
+      "path": "x",
+      "type": "field",
+    },
+    {
+      "location": "query",
+      "msg": "must be number",
+      "path": "y",
+      "type": "field",
+    },
+  ],
+  "message": "Bad Request",
+  "status": 400,
+}
+`;
+
+exports[`responds with 400 for bad input > GET /1/characters/2/verify-position?x=abc&y=xyz 1`] = `
+{
+  "data": [
+    {
+      "location": "query",
+      "msg": "must be number",
+      "path": "x",
+      "type": "field",
+      "value": "abc",
+    },
+    {
+      "location": "query",
+      "msg": "must be number",
+      "path": "y",
+      "type": "field",
+      "value": "xyz",
+    },
+  ],
+  "message": "Bad Request",
+  "status": 400,
+}
+`;
