@@ -1,0 +1,31 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`responds with data for a new game > GET /1/new-game 1`] = `
+{
+  "characters": [
+    {
+      "id": 1,
+      "imageURL": "https://static.wikia.nocookie.net/waldo/images/9/9d/Character.Waldo.jpg",
+      "name": "Waldo",
+    },
+    {
+      "id": 2,
+      "imageURL": "https://static.wikia.nocookie.net/waldo/images/3/3e/Character.Wenda.jpg",
+      "name": "Wenda",
+    },
+    {
+      "id": 3,
+      "imageURL": "https://static.wikia.nocookie.net/waldo/images/6/60/Character.Whitebeard.jpg",
+      "name": "Wizard Whitebeard",
+    },
+  ],
+  "description": "WHAT A SPECTACULAR SCENE THIS IS, WALDO-WATCHERS! AND WHAT AN EPIC COMMOTION PICTURE! I WONDER WHY THE TROJANS DIDN'T GUESS THE WOODEN HORSE WAS FULL OF GREEKS, AND HOW DID THEY GET IT THROUGH THE GATES OF TROY ANYWAY? I WOULDN'T LIKE TO BE IN THE TROJANS' SANDALS, IF THE COSTUME DEPARTMENT HAD GIVEN THEM ANY, THAT IS!",
+  "id": 1,
+  "imageHeight": 2227,
+  "imageURL": "https://i.imgur.com/QLACwOG.jpeg",
+  "imageWidth": 3536,
+  "name": "HORSEPLAY IN TROY",
+}
+`;
+
+exports[`responds with data for a new game > GET /1/new-game 2`] = `undefined`;
