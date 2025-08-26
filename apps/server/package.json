@@ -9,7 +9,8 @@
     "scripts": {
         "test": "vitest",
         "lint": "eslint .",
-        "start": "tsc && node ./dist/app.js",
+        "build": "tsc",
+        "start": "node ./dist/app.js",
         "migrate:dev": "prisma migrate dev",
         "migrate:reset": "prisma migrate reset",
         "db:seed": "prisma db seed",
