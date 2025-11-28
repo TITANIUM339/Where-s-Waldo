@@ -14,51 +14,51 @@ import leaderBoardLoader from "./pages/leaderboard/loader";
 import newPlayerLoader from "./pages/new-player/loader";
 import verifyCharactersLoader from "./pages/verify-position/loader";
 
-export default function App() {
-    const router = createBrowserRouter([
-        {
-            path: "/",
-            Component: Root,
-            ErrorBoundary,
-            HydrateFallback,
-            children: [
-                {
-                    index: true,
-                    loader: indexLoader,
-                    Component: Index,
-                },
-                {
-                    path: "new-player",
-                    loader: newPlayerLoader,
-                },
-                {
-                    path: "games",
-                    loader: gamesLoader,
-                    Component: Games,
-                },
-                {
-                    path: "games/:gameId",
-                    loader: gameLoader,
-                    Component: Game,
-                    children: [
-                        {
-                            path: "characters/:characterId/verify-position",
-                            loader: verifyCharactersLoader,
-                        },
-                        {
-                            path: "end-game",
-                            action: endGameAction,
-                        },
-                    ],
-                },
-                {
-                    path: "games/:gameId/leaderboard",
-                    loader: leaderBoardLoader,
-                    Component: Leaderboard,
-                },
-            ],
-        },
-    ]);
+const router = createBrowserRouter([
+    {
+        path: "/",
+        Component: Root,
+        ErrorBoundary,
+        HydrateFallback,
+        children: [
+            {
+                index: true,
+                loader: indexLoader,
+                Component: Index,
+            },
+            {
+                path: "new-player",
+                loader: newPlayerLoader,
+            },
+            {
+                path: "games",
+                loader: gamesLoader,
+                Component: Games,
+            },
+            {
+                path: "games/:gameId",
+                loader: gameLoader,
+                Component: Game,
+                children: [
+                    {
+                        path: "characters/:characterId/verify-position",
+                        loader: verifyCharactersLoader,
+                    },
+                    {
+                        path: "end-game",
+                        action: endGameAction,
+                    },
+                ],
+            },
+            {
+                path: "games/:gameId/leaderboard",
+                loader: leaderBoardLoader,
+                Component: Leaderboard,
+            },
+        ],
+    },
+]);
 
+export default function App() {
     return <RouterProvider router={router} />;
 }
